@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <title>Public</title> 
+        <h:outputLink value="index.xhtml">Go back to main page</h:outputLink>
+    </h:head>
+<h:body>
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-brand">
+                    Public search 
+                </div>
+            </div>
+            <h:form id="MyForm">
+                <table class="table table-bordered table-striped">
+                   <tr>
+                        <td>Please enter the transaction ID: </td>
+                        <td><h:inputText id="searchByID" value="#{transactionBeans.transId}">
+                            </h:inputText></td>
+                        <h:commandButton id="searchByIdButton" value="Search transaction By ID" action="#{transactionBeans.searchById()}" />
+                    </tr>   
+                </table>
+                <br/>
+                    <table class="table table-bordered table-striped">
+                        <ui:repeat id="repeat1" value="#{transactionBeans.objId}" var="Transaction" varStatus="status"> 
+                        <tr>
+                            <h2>result search By Id</h2>
+                            <td>
+                                <h:outputText value="#{Transaction.id}" id="TransactionId" /> 
+                            </td>
+                            <td> 
+                                <h:outputLabel id="name1" value="Name:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outName1" value="#{Transaction.transName}"  />
+                            </td>
+                        </tr>   
+                    </ui:repeat> 
+                </table>
+                <br/>
+                <h:commandButton id="detailById" value="View details" action="#{transactionBeans.displayObjId()}" /> 
+                <br/>
+                    <table class="table table-bordered table-striped">
+                        <ui:repeat id="repeat2" value="#{transactionBeans.objIdDetail}" var="TransactionType" varStatus="status"> 
+                        <tr>
+                            <td>
+                                <h:outputText value="#{TransactionType.id}" id="TransactionIdDetail" /> 
+                            </td>
+                            <td> 
+                                <h:outputLabel id="name2" value="Name:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outName2" value="#{TransactionType.transName}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="Description2" value="Description:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outDescription2" value="#{TransactionType.transDesc}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="type2" value="Type:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outType2" value="#{TransactionType.transType}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="Customer2" value="Customer Id: "  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomer2" value="#{TransactionType.customer}"  />
+                            </td>
+                        </tr>   
+                    </ui:repeat> 
+                </table>
+            </h:form>
+            
+            <h:form id="MyForm2">
+                <table class="table table-bordered table-striped">
+                   <tr>
+                        <td>Enter transaction name here:</td>
+                        <td><h:inputText id="searchByName" value="#{transactionBeans.transName}">
+                            </h:inputText></td>
+                        <h:commandButton id="searchTransName" value="Search By name" action="#{transactionBeans.searchTransName()}" />
+                    </tr>   
+                </table>
+                <br/>
+                    <table class="table table-bordered table-striped">
+                        <h2>result search by Name</h2>
+                        <ui:repeat id="repeat3" value="#{transactionBeans.objsName}" var="TransactionType" varStatus="status"> 
+                       
+                            <tr>
+                            
+                            <td>
+                                <h:outputText value="#{TransactionType.id}" id="TransactionName" /> 
+                            </td>
+                            <td> 
+                                <h:outputLabel id="name3" value="Name:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outName3" value="#{TransactionType.transName}"  />
+                            </td>
+                        </tr>   
+                    </ui:repeat> 
+                </table>
+                <br/>
+                <h:commandButton id="detailByName" value="View Detail" action="#{transactionBeans.displayObjsName()}" /> 
+                <br/>
+                    <table class="table table-bordered table-striped">
+                        <ui:repeat id="repeat4" value="#{transactionBeans.objsNameDetail}" var="TransactionType" varStatus="status"> 
+                        <tr>
+                            <td>
+                                <h:outputText value="#{TransactionType.id}" id="transactionId" /> 
+                            </td>
+                            <td> 
+                                <h:outputLabel id="name4" value="Name:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outName4" value="#{TransactionType.transName}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="Description4" value="Description:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outDeDescription4" value="#{TransactionType.transDesc}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="type4" value="Type:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outType4" value="#{TransactionType.transType}"  />
+                            </td>
+                             <td> 
+                                <h:outputLabel id="Customer4" value="Customer Id: "  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomer4" value="#{TransactionType.customer}"  />
+                            </td>
+                        </tr>   
+                    </ui:repeat> 
+                </table>
+            </h:form>
+         
+            <h:form id="MyForm3">
+                <table class="table table-bordered table-striped">
+                   <tr>
+                        <td>enter transaction Type: </td>
+                        <td><h:inputText id="searchByType" value="#{searchTransBean.transType}">
+                            </h:inputText></td>
+                        <h:commandButton id="searchTransType" value="Search By Transaction Type" action="#{searchTransBean.searchByType()}" />
+                    </tr>   
+                </table>
+                <br/>
+                    <table class="table table-bordered table-striped">
+                        <h2>result search by Type</h2>
+                        <ui:repeat id="repeat6" value="#{searchTransBean.objsByType}" var="TransactionType" varStatus="status"> 
+                        <tr>
+                            <td>
+                                <h:outputText value="#{TransactionType.id}" id="transactionType" /> 
+                            </td>
+                            <td> 
+                                <h:outputLabel id="name6" value="Name:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outName6" value="#{TransactionType.transName}"  />
+                            </td>
+                        </tr>   
+                    </ui:repeat> 
+                </table>
+                <br/>
+                <h:commandButton id="detail" value="View detail" action="#{searchTransBean.displaySearchByType()}" /> 
+                <br/>
+                    <table class="table table-bordered table-striped">
+                        <ui:repeat id="repeat7" value="#{searchTransBean.objsByTypeDetail}" var="Transaction" varStatus="status"> 
+                        <tr>
+                            <td>
+                                <h:outputText value="#{Transaction.id}" id="transactionType" /> 
+                            </td>
+                            <td> 
+                                <h:outputLabel id="name7" value="Name:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outName7" value="#{Transaction.transName}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="Description7" value="Description:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outDescription7" value="#{Transaction.transDesc}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="type7" value="Type:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outType7" value="#{Transaction.transType}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="CustomerTy7" value="Customer ID: "  />
+                            </td>
+                            <td> 
+                                <h:outputText id="Customer7" value="#{Transaction.customer}"  />
+                            </td>
+                        </tr>   
+                    </ui:repeat> 
+                </table>
+            </h:form>
+        </div>
+     </h:body>
+</html>
+

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"> 
+    <h:head> 
+        <title>Worker</title> 
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />
+    </h:head> 
+    <h:body class="container"> 
+        <div class="container">
+            <div class="row justify-content-center">
+                <header> 
+                    <h1>Input user's information</h1> 
+                </header> 
+                <h:form>
+                    <h:outputLabel for="cusId">User Id:</h:outputLabel>
+                    <h:inputText value="#{deleteMbeans.customer.id}" id="cusId" p:placeholder="#{deleteMbeans.customer.id}"></h:inputText>
+                    <br></br>
+
+                    <h:outputLabel for="cusFirstName">First Name:</h:outputLabel>
+                    <h:inputText value="#{deleteMbeans.customer.firstName}" p:placeholder="#{deleteMbeans.customer.firstName}" validatorMessage="Your First Name can have only Alphabets">
+                        <f:validateRegex pattern="^([a-zA-Z]+(.)?[\s]*)$" /> 
+                    </h:inputText>
+                    <br></br>
+
+                    <h:outputLabel for="cusLastName">Last Name:</h:outputLabel>
+                    <h:inputText value="#{deleteMbeans.customer.lastName}" p:placeholder="#{deleteMbeans.customer.lastName}" validatorMessage="Your Last Name can have only Alphabets">
+                        <f:validateRegex pattern="^([a-zA-Z]+(.)?[\s]*)$" /> 
+                    </h:inputText>
+                    <br></br>
+
+                    <h:outputLabel for="cusPassword">Password:</h:outputLabel>
+                    <h:inputText value="#{deleteMbeans.customer.password}" p:placeholder="#{deleteMbeans.customer.password}"></h:inputText>
+                    <br></br>
+
+                    <h:outputLabel for="cusEmail">Email:</h:outputLabel>
+                    <h:inputText value="#{deleteMbeans.customer.email}" p:placeholder="#{deleteMbeans.customer.email}" validatorMessage="Must use this format:(e.g) xxxx@xxx.com">
+                        <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" /></h:inputText>
+                    <br></br>
+
+                    <h:outputLabel for="cusCity">City:</h:outputLabel>
+                    <h:inputText value="#{deleteMbeans.customer.city}" p:placeholder="#{deleteMbeans.customer.city}"></h:inputText>
+                    <br></br>
+
+                    <h:outputLabel for="cusCountry">Country:</h:outputLabel>
+                    <h:inputText value="#{deleteMbeans.customer.country}" p:placeholder="#{deleteMbeans.customer.country}"></h:inputText>
+                    <br></br>
+
+                    <h:outputLabel for="cusPhonNum">Phone Number:</h:outputLabel>
+                    <h:inputText value="#{deleteMbeans.customer.phoneNumber}" p:placeholder="#{deleteMbeans.customer.phoneNumber}"></h:inputText>
+                    <br></br>
+
+                    <h:outputLabel for="cusPostCode">PostCode:</h:outputLabel>
+                    <h:inputText value="#{deleteMbeans.customer.postcode}" p:placeholder="#{deleteMbeans.customer.postcode}"></h:inputText>
+                    <br></br> 
+
+                    <h:outputLabel for="cusStreetAddress">Address:</h:outputLabel>
+                    <h:inputText value="#{deleteMbeans.customer.streetAddress}" p:placeholder="#{deleteMbeans.customer.streetAddress}"></h:inputText>
+                    <br></br>
+
+                    <h:outputLabel for="cusType">Type:</h:outputLabel>
+                    <h:selectOneMenu value="#{deleteMbeans.customer.type}">
+                        <f:selectItem itemValue="worker" itemLabel="worker" />
+                        <f:selectItem itemValue="public" itemLabel="public" />
+                    </h:selectOneMenu>
+
+
+                    <h:commandButton class="btn btn-default" action="#{deleteMbeans.updateNewCus()}" value="Save"></h:commandButton>
+                    <h:link value="Back to Users Lists" outcome="/admin/ViewCus.xhtml" />
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+</html>
+
+
+
+
+

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+      >
+    <ui:composition template="/templates/page-template.xhtml">
+        <ui:param name="pageTitle" value="Shopping Cart"/>
+        <ui:define name="panel-top">
+            <section>
+                <h1>Shopping Cart</h1>
+                <ui:fragment rendered="#{shoppingCart.totalQuantity == 0}">
+                    <p>Your shopping cart is empty.</p>
+                </ui:fragment>
+                <ui:fragment rendered="#{shoppingCart.totalQuantity >= 1}">
+                    <p>Your shopping cart contains #{shoppingCart.totalQuantity} items.</p>
+                </ui:fragment>
+                <p><h:outputLink value="index.xhtml">Back to Products Lists</h:outputLink></p>
+            </section>
+        </ui:define>
+        <ui:define name="panel-main">
+            <ui:fragment rendered="#{not empty shoppingCart.lines}">
+                <section>
+                    <h:form>
+                        <h:dataTable value="#{shoppingCart.lines}" var="line">
+                            <h:column>
+                                <f:facet name="header">Product</f:facet>
+                                <f:param name="productId" value="#{line.product.id}"/>
+                                #{line.product.name}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Price</f:facet>
+                                    #{line.product.price}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Quantity</f:facet>
+                                    #{line.quantity}
+                                <h:commandButton value="+" action="#{shoppingCart.addProduct(line.product)}"/>
+                                <h:commandButton value="-" action="#{shoppingCart.removeProduct(line.product)}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Amount</f:facet>
+                                    #{line.amount}
+                                <f:facet name="footer">#{shoppingCart.totalAmount}</f:facet>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                    <h:form id="makePayment">
+                        
+                            
+                        <h:commandButton class="btn btn-primary" value="make a booking" action="#{addTransaction.allPublicUsers()}"/>
+                        <br></br>
+                        
+                        <table class="table table-bordered table-striped">
+                            <h:outputLabel for="transId">Transaction ID:</h:outputLabel>
+                            <h:inputText value="#{addTransaction.transId}" ></h:inputText>
+                            <br></br>
+
+                            <h:outputLabel for="transId">Transaction name:</h:outputLabel>
+                            <h:inputText value="#{addTransaction.transName}" ></h:inputText>
+                            <br></br>
+
+                            <h:outputLabel for="transId">Transaction Type:</h:outputLabel>
+                            <h:inputText value="#{addTransaction.transType}" ></h:inputText>
+                            <br></br>
+
+                            <h:outputLabel for="transId">Transaction Description:</h:outputLabel>
+                            <h:inputText value="#{addTransaction.transDesc}" ></h:inputText>
+                            <br></br>
+
+                            <h:selectOneMenu value="#{addTransaction.customer}" converter="omnifaces.SelectItemsConverter">
+                                <f:selectItems value="#{addTransaction.publicer}" var="customer" itemValue="#{customer}" itemLabel="#{customer.firstName}" />
+                            </h:selectOneMenu>
+                            <tr>
+                                <td>
+                                    <h:commandButton onclick = "showMessage();" class="btn btn-default" value="Pay now!" action="#{addTransaction.addPayment(addTransaction.saveD())}" /> 
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:commandButton class="btn btn-success" value="View the transaction" action="#{addTransaction.displayDetail(addTransaction.saveD())}" /> 
+                                </td>
+                            </tr>
+                            <ui:repeat id="TransactionHistory" value="#{addTransaction.payDetail}" var="newTrans" varStatus="status"> 
+                                
+                        <tr>
+                            <td>
+                                <h:outputText value="#{newTrans.id}" id="newTransId" /> 
+                            </td>
+                            <td> 
+                                <h:outputLabel id="nameNew" value="Name:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outNameNew" value="#{newTrans.transName}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="DescriptionNew" value="Description:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outDescriptionNew" value="#{newTrans.transDesc}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="typeNew" value="Type:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outTypeNew" value="#{newTrans.transType}"  />
+                            </td>
+                            <td>
+                            <h:commandButton  class="btn btn-danger" value="Cancle" action="#{addTransaction.deleteTrans(newTrans.id)}" /> 
+                            </td>
+                        </tr>  
+                                <tr>
+                                    <p>You can click button to cancel your booking</p>
+                                </tr>
+                    </ui:repeat> 
+                              
+                            
+                        </table>
+                    </h:form>
+                </section>
+            </ui:fragment>
+        </ui:define>
+    </ui:composition>
+</html>
+

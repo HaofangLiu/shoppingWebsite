@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>
+            Welcome to Melbourne Star System
+        </title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body>
+        <div calss="container">
+            <div class="navbar navbar-brand">
+
+                <div class="title">Please choose one way to login</div>
+
+                <br />
+                <div class="row">
+                    <div calss="col-xs-6">
+                        <h:graphicImage library="images" name="5.png" />
+                        <h:outputLink value="public/index.xhtml" styleClass="apply" >Public users</h:outputLink>
+                    </div>
+                    <br/><br/><br/><br/>
+                    <div calss="col-xs-6">
+                        <h:graphicImage library="images" name="6.png" />
+                        <h:outputLink value="admin/index.xhtml" styleClass="apply">Administrator users</h:outputLink>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+
+</html>

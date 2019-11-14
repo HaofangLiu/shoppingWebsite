@@ -1,0 +1,43 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+html { background: #EAEAEA; } 
+body { background: #FFF; width: 960px; margin: 0 auto; font-family: sans-serif; padding-bottom: 5px; } 
+header { background: #9CF; height: 40px; padding: 20px; } 
+article { padding: 20px; } 
+footer { background: #EEE; border: 1px solid #999; margin: 5px 10px; padding: 0 10px; } 
+
+header h1 { color: #FFF; margin: 0; } 
+h2 { margin: 0; } 
+
+form p { font-weight: bold; margin: 0; } 
+input { margin-bottom: 20px; } 
+textarea { display: block; margin-bottom: 10px; height: 240px; width: 480px;} 
+
+.error { color: red; font-weight: bold; } 
+
+.buttons .apply {
+    background: #eee url(path/to/apply.png) no-repeat 0 50%;
+
+    .title {
+        font-family: Georgia;
+        font-weight:bold;
+        font-size:40px;
+    }
+
+    .form {
+      padding-top: 20px;
+      
+      }
+      
+      .link{
+         
+    background-color: lightgreen;
+
+      }
+
+
+} 

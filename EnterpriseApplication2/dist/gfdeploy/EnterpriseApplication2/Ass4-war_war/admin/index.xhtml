@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />
+        <h:outputStylesheet library="css" name="style.css" />
+        <title>Administrator</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h1>
+                Welcome to use Administrator manage system by Melbourne star
+            </h1>
+            <p>Select one option:</p>
+            <br />
+            <h:link class="link" value="View all registered users" outcome="ViewCus.xhtml" />
+            <br /><br />
+            <h:link value="Add a new user" outcome="Worker.xhtml" />
+            <br /><br />
+            <h:link value="Search user" outcome="searchCustomer.xhtml" />
+            <br /><br />
+            <h:commandButton value="logout" action="#{addCustomer.logout()}" />
+        </h:form>
+    </h:body>
+</html>

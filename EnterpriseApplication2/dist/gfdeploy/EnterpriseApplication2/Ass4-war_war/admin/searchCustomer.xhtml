@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <title>Search User</title> 
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-brand">
+                    Search for some User
+                </div>
+            </div>
+            <h:link value="Back to Main page" outcome="index.xhtml" />
+            <h:form id="SearchCus">
+                
+                <h:outputLabel for="Type" value="Select a search type" />
+                <h:selectOneMenu value="#{searchUser.searchType}">
+                    <f:selectItems value="#{searchUser.searchList}" var="Stype" itemLabel="#{Stype}" itemValue="#{Stype}" />
+                </h:selectOneMenu>
+                <h:inputText id="searchContent" value="#{searchUser.searchContent}">
+                </h:inputText>
+                <h:commandButton id="searchCust" value="Search Customer" action="#{searchUser.searchCust()}" /> 
+
+                <table class="table table-bordered table-striped">
+                    <h2>The search result list</h2>
+                    <ui:repeat id="CusResult" value="#{searchUser.resultCus}" var="allcus" varStatus="status"> 
+                        <tr>
+                            <td>
+                                <h:outputText value="#{allcus.id}" id="CustomerId" /> 
+                            </td>
+                            <td> 
+                                <h:outputLabel id="CustomerFirstName" value="First Name:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomerFirstName" value="#{allcus.firstName}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="CustomerLastName" value="Last Name:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomerLastName" value="#{allcus.lastName}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="CustomerCity" value="City:"  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomerCity" value="#{allcus.city}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="CustomerCountry" value="Country: "  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomerCountry" value="#{allcus.country}"  />
+                            </td>
+
+                            <td> 
+                                <h:outputLabel id="CustomerPostcode" value="Post code: "  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomerPostcode" value="#{allcus.postcode}"  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> 
+                                <h:outputLabel id="CustomerEmail" value="Email: "  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomerEmail" value="#{allcus.email}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="CustomerPassword" value="Password: "  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomerPassword" value="#{allcus.password}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="CustomerAddress" value="Address: "  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomerAddress" value="#{allcus.streetAddress}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="CustomerType" value="Type: "  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomerType" value="#{allcus.type}"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="CustomerPhone" value="Phone Number: "  />
+                            </td>
+                            <td> 
+                                <h:outputText id="outCustomerPhone" value="#{allcus.phoneNumber}"  />
+                            </td>
+                        </tr>   
+                    </ui:repeat> 
+                    <h:link value="Back to Main page" outcome="index.xhtml" />
+                </table>
+            </h:form>
+
+        </div>
+    </h:body>
+</html>
